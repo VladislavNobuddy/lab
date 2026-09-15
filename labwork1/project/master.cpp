@@ -19,11 +19,6 @@ int main() {
 	string goodAnswer{"Точка попала в треугольник, по крайней мере, на его границу"};
 	string badAnswer{ "Точка не попала в треугольник" };
 
-	//cout << "Задать x координату катета, параллельного оси ординат? Введите числовое значение или N, если хотите оставить координату → ∞" << endl;
-	//
-	//short border{};
-
-	cout << "Считаем, что длина катетов треугольника → ∞, а также что координаты принадлежат множеству натуральных чисел" << endl;
 	while (true) {
 		cout << "Введите координаты для проверки в формате x, y: " << endl;
 
@@ -37,46 +32,43 @@ int main() {
 			};
 			cin >> userCords[i];
 			
-			if (cin.fail()) {
-				cout << "Было введено значение, превышающее допустимое для переменной или же не соответствующее. Зачем?" << endl;
-
-				cin.clear();
-
-				cin.ignore((std::numeric_limits<streamsize>::max)(), '\n'); //Очищает буфер ввода
-			}
-
-			else {
-				cin.ignore((std::numeric_limits<streamsize>::max)(), '\n'); //Очищаем буфер, если с прошлого ввода осталась отброшенная дробная часть
-
-				i++;
-			};
+			i++;
 		};
 
 		if (
-			userCords[1] < 0 
-			||
-			userCords[0] < 0
-			) {
-			cout << badAnswer << endl;
-		}
-
+			userCords[0] == 0 
+			&&
+			userCords[1] == 0
+			)
+		{break;}
 		else {
-			short yCord = function(userCords[0]);
-
 			if (
-				userCords[1] <= yCord
-				&&
-				userCords[1] >= 0
-				)
-			{
-				cout << goodAnswer << endl;
-			}
-			else if (
-				userCords[1] > yCord
+				userCords[1] < 0
+				||
+				userCords[0] < 0
 				) {
 				cout << badAnswer << endl;
-			};
+			}
+
+			else {
+				short yCord = function(userCords[0]);
+
+				if (
+					userCords[1] <= yCord
+					&&
+					userCords[1] >= 0
+					)
+				{
+					cout << goodAnswer << endl;
+				}
+				else if (
+					userCords[1] > yCord
+					) {
+					cout << badAnswer << endl;
+				};
+			}
 		}
+
 	};
 
 	return 0;
