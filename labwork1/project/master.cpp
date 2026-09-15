@@ -19,6 +19,12 @@ int main() {
 	string goodAnswer{"Точка попала в треугольник, по крайней мере, на его границу"};
 	string badAnswer{ "Точка не попала в треугольник" };
 
+	cout << "Задать x координату катета, параллельного оси ординат? Введите числовое значение или N, если хотите оставить координату → ∞" << endl;
+	
+	short border{};
+
+	cin >> border;
+	cout << "Считаем, что катет треугольника, лежит на координате x = " << border << ", а также что координаты принадлежат множеству натуральных чисел" << endl;
 	while (true) {
 		cout << "Введите координаты для проверки в формате x, y: " << endl;
 
@@ -43,9 +49,25 @@ int main() {
 		{break;}
 		else {
 			if (
+<<<<<<< HEAD
 				userCords[1] < 0
 				||
 				userCords[0] < 0
+=======
+				userCords[1] <= yCord
+				&&
+				userCords[1] >= 0
+				&&
+				(border == 0 ? true : userCords[0] <= border)
+				)
+			{
+				cout << goodAnswer << endl;
+			}
+			else if (
+				userCords[1] > yCord
+				||
+				userCords[0] > border
+>>>>>>> parent of f14a7c1 (1.0.1)
 				) {
 				cout << badAnswer << endl;
 			}
