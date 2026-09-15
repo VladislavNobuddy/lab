@@ -30,7 +30,7 @@ int main() {
 
 		cin.clear();
 
-		cin.ignore((std::numeric_limits<streamsize>::max)(), '\n'); //Очищает буфер ввода. как это работает по отдельности я х знает и знать не хочу
+		cin.ignore((std::numeric_limits<streamsize>::max)(), '\n'); //Очищает буфер ввода
 	}
 
 	else {
@@ -57,7 +57,7 @@ int main() {
 
 				cin.clear();
 
-				cin.ignore((std::numeric_limits<streamsize>::max)(), '\n'); //Очищает буфер ввода. как это работает по отдельности я х знает и знать не хочу
+				cin.ignore((std::numeric_limits<streamsize>::max)(), '\n'); //Очищает буфер ввода
 			}
 
 			else {
