@@ -3,22 +3,22 @@
 #include <algorithm>
 
 int main() {
-	SetConsoleOutputCP(1251);
-	SetConsoleCP(1251);
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
 
     using namespace std;
 
-	int userNumber{};
+    int userNumber{};
 
-	cout << "Введите целое положительное число: ";
-	cin >> userNumber;
+    cout << "Введите целое положительное число: ";
+    cin >> userNumber;
 
-	if (userNumber < 2) {
+    if (userNumber < 2) {
         return 0;
-	}
+    }
 
-	for (int start = 0, end = 10; start <= userNumber; start = end + 1; end += 10) {
-        int last = std::min(end, userNumber);
+    for (int start = 0, end = 10; start <= userNumber; start = end + 1, end += 10) {
+        int last = (std::min)(end, userNumber);
         bool printed = false; // поскольку в интервале от 201 до 210 нет ни одного простого числа, далее также существуют подобные интервалы
 
         if (
@@ -37,7 +37,7 @@ int main() {
         for (int x = firstOdd; x <= last; x += 2) { //нечетное + 2 = нечетное. четное число никогда не простое
 
             bool prime = true; //проверка на то, является ли простым число. если у x есть делитель нацело помимо себя самого и 1
-            for (int j = 3; j * j <= x; j += 2) { // проверяем только нечетные делители, поскольку нечетное не может делиться на четное без остатка. j <= x / j: множитель (j) не должен превосходить корень из числа (x), ибо тогда мы повторно получим пары делителей
+            for (int j = 3; j <= x / j; j += 2) { // проверяем только нечетные делители, поскольку нечетное не может делиться на четное без остатка. j <= x / j: множитель (j) не должен превосходить корень из числа (x), ибо тогда мы повторно получим пары делителей
                 if (x % j == 0) { // делится ли число x на j без остатка? (тогда простое)
                     prime = false;
                     break;
@@ -50,7 +50,7 @@ int main() {
                 printed = true;
             }
         }
-        
+
 
         if (printed) {
             cout << '\n';
